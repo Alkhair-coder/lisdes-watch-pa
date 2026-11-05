@@ -1,0 +1,175 @@
+{
+  "version": "OT v1.3",
+  "timestamp": "2026-10-23T05:42:50.261Z",
+  "results": [
+    {
+      "id": "OT-11",
+      "expected": "NO",
+      "actual": "NO",
+      "result": "PASS",
+      "evidence": "Automated local logic / React render; not browser UAT"
+    },
+    {
+      "id": "OT-12",
+      "expected": "NO",
+      "actual": "NO",
+      "result": "PASS",
+      "evidence": "Automated local logic / React render; not browser UAT"
+    },
+    {
+      "id": "OT-13",
+      "expected": "NO",
+      "actual": "NO",
+      "result": "PASS",
+      "evidence": "Automated local logic / React render; not browser UAT"
+    },
+    {
+      "id": "OT-14",
+      "expected": "YES",
+      "actual": "YES",
+      "result": "PASS",
+      "evidence": "Automated local logic / React render; not browser UAT"
+    },
+    {
+      "id": "OT-15",
+      "expected": "YES",
+      "actual": "YES",
+      "result": "PASS",
+      "evidence": "Automated local logic / React render; not browser UAT"
+    },
+    {
+      "id": "OT-16",
+      "expected": [
+        "WF-C",
+        "WF-B",
+        "WF-A"
+      ],
+      "actual": [
+        "WF-C",
+        "WF-B",
+        "WF-A"
+      ],
+      "result": "PASS",
+      "evidence": "Automated local logic / React render; not browser UAT"
+    },
+    {
+      "id": "OT-19",
+      "expected": 1.428571,
+      "actual": 1.428571,
+      "result": "PASS",
+      "evidence": "Automated local logic / React render; not browser UAT"
+    },
+    {
+      "id": "OT-20",
+      "expected": 4,
+      "actual": 4,
+      "result": "PASS",
+      "evidence": "Automated local logic / React render; not browser UAT"
+    },
+    {
+      "id": "OT-23",
+      "expected": "REVIEW REQUIRED",
+      "actual": "REVIEW REQUIRED",
+      "result": "PASS",
+      "evidence": "Automated local logic / React render; not browser UAT"
+    },
+    {
+      "id": "OT-26",
+      "expected": {
+        "date": "2026-10-21",
+        "actual": 45,
+        "totalReady": 95,
+        "targetLeadDays": 7
+      },
+      "actual": {
+        "date": "2026-10-21",
+        "actual": 45,
+        "totalReady": 95,
+        "targetLeadDays": 7
+      },
+      "result": "PASS",
+      "evidence": "Automated local logic / React render; not browser UAT"
+    },
+    {
+      "id": "OT-27",
+      "expected": "AUDIT COMPLETE",
+      "actual": "AUDIT COMPLETE",
+      "result": "PASS",
+      "evidence": "Automated local logic / React render; not browser UAT"
+    },
+    {
+      "id": "OT-28",
+      "expected": [
+        684,
+        89.47,
+        964
+      ],
+      "actual": [
+        684,
+        89.47,
+        964
+      ],
+      "result": "PASS",
+      "evidence": "Automated local logic / React render; not browser UAT"
+    },
+    {
+      "id": "OT-29",
+      "expected": [
+        [
+          "P1",
+          "HOLD",
+          "YES"
+        ],
+        [
+          "P2",
+          "CONDITIONAL GO",
+          "NO"
+        ],
+        [
+          "P3",
+          "GO",
+          "NO"
+        ]
+      ],
+      "actual": [
+        [
+          "P1",
+          "HOLD",
+          "YES"
+        ],
+        [
+          "P2",
+          "CONDITIONAL GO",
+          "NO"
+        ],
+        [
+          "P3",
+          "GO",
+          "NO"
+        ]
+      ],
+      "result": "PASS",
+      "evidence": "Automated local logic / React render; not browser UAT"
+    },
+    {
+      "id": "OT-30",
+      "expected": [
+        4,
+        0,
+        13,
+        9
+      ],
+      "actual": [
+        4,
+        0,
+        13,
+        9
+      ],
+      "result": "PASS",
+      "evidence": "Automated local logic / React render; not browser UAT"
+    }
+  ],
+  "render": "PASS",
+  "browser": "NOT RUN",
+  "assumptions": "OT30 durations A5 B1 C3, one crew, no transit, prerequisites met at material-ready day"
+}

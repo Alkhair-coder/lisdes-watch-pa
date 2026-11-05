@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';
+import {DatabaseSync} from 'node:sqlite';
+import fs from 'node:fs';
+import {handler} from '../worker/index.ts';
+import {demoProjects,defaults,controlledWorkfronts,recordReport} from '../lib/model.ts';
+const db=new DatabaseSync(':memory:');db.exec(fs.readFileSync(new URL('../migrations/0001_initial.sql',import.meta.url),'utf8'));
+const DB={prepare(sql){let args=[];return {bind(...v){args=v;return this},async first(){return db.prepare(sql).get(...args)||null},async run(){return db.prepare(sql).run(...args)}}}};
+const env={DB,ADMIN_KEY:'integration-secret-with-at-least-32-characters',ASSETS:{fetch:()=>new Response('app')}};
+function req(path,method='GET',data,session='',origin='https://test.local'){return new Request('https://test.local'+path,{method,headers:{Origin:origin,'Content-Type':'application/json',Cookie:session},body:data===undefined?undefined:JSON.stringify(data)})}
+let r=await handler(req('/api/data'),env);assert.equal(r.status,200);assert.deepEqual((await r.json()).projects,[]);
+assert.equal((await handler(req('/api/data','PUT',{}),env)).status,401);
+assert.equal((await handler(req('/api/login','POST',{password:env.ADMIN_KEY},'','https://evil.local'),env)).status,403);
+r=await handler(req('/api/login','POST',{password:env.ADMIN_KEY}),env);assert.equal(r.status,200);const c=r.headers.get('set-cookie');assert(c.includes('HttpOnly'));assert(c.includes('Secure'));const session=c.split(';')[0];
+const data={projects:[recordReport(controlledWorkfronts()[0]),...demoProjects().slice(1).map(p=>({...p,totalRequired:100,totalReady:95}))],settings:defaults,revision:0};
+r=await handler(req('/api/data','PUT',data,session),env);assert.equal(r.status,200);assert.equal((await r.json()).revision,1);
+r=await handler(req('/api/data','GET',undefined,session),env);const stored=await r.json();assert.equal(stored.projects.length,4);assert(stored.authenticated);assert.equal(stored.projects[0].totalRequired,100);assert.equal(stored.projects[0].totalReady,60);assert.equal(stored.projects[0].targetLeadDays,7);assert.equal(stored.projects[0].projectedLeadDays,10);assert.equal(stored.projects[0].materialReadyDay,5);assert.equal(stored.projects[0].decisionLog.length,1);assert.equal(stored.projects[0].decisionLog[0].input.totalReady,60);assert.equal(stored.projects[0].history[0].targetLeadDays,7);
+assert.equal((await handler(req('/api/data','PUT',data,session),env)).status,409);
+assert.equal((await handler(req('/api/data','PUT',{...data,revision:1,projects:[{...data.projects[0],ready:1000}]},session),env)).status,400);
+assert.deepEqual((await (await handler(req('/api/data'),env)).json()).projects,[]);
+r=await handler(req('/api/logout','POST',{},session),env);assert(r.headers.get('set-cookie').includes('Max-Age=0'));
+for(let i=0;i<4;i++)await handler(req('/api/login','POST',{password:'wrong'}),env);
+assert.equal((await handler(req('/api/login','POST',{password:'wrong'}),env)).status,429);
+console.log('API checks passed: login, cookies, persistence, optimistic revision, invalid data, anonymous isolation, origin rejection, logout, rate limiting.');

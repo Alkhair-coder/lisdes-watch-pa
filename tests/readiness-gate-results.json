@@ -1,0 +1,63 @@
+{
+  "version": "OT v1.2",
+  "results": [
+    {
+      "id": "OT-04",
+      "expected": "HOLD",
+      "actual": "HOLD",
+      "logic": "PASS",
+      "render": "PASS",
+      "browser": "NOT RUN"
+    },
+    {
+      "id": "OT-05",
+      "expected": "GO",
+      "actual": "GO",
+      "logic": "PASS",
+      "render": "PASS",
+      "browser": "NOT RUN"
+    },
+    {
+      "id": "OT-06",
+      "expected": "CONDITIONAL GO",
+      "actual": "CONDITIONAL GO",
+      "logic": "PASS",
+      "render": "PASS",
+      "browser": "NOT RUN"
+    },
+    {
+      "id": "OT-07",
+      "expected": "HOLD",
+      "actual": "HOLD",
+      "logic": "PASS",
+      "render": "PASS",
+      "browser": "NOT RUN"
+    },
+    {
+      "id": "OT-08",
+      "expected": "HOLD",
+      "actual": "HOLD",
+      "logic": "PASS",
+      "render": "PASS",
+      "browser": "NOT RUN"
+    },
+    {
+      "id": "OT-09",
+      "expected": "CONDITIONAL GO",
+      "actual": "CONDITIONAL GO",
+      "logic": "PASS",
+      "render": "PASS",
+      "browser": "NOT RUN"
+    },
+    {
+      "id": "OT-10",
+      "expected": "CONDITIONAL GO",
+      "actual": "CONDITIONAL GO",
+      "logic": "PASS",
+      "render": "PASS",
+      "browser": "NOT RUN"
+    }
+  ],
+  "legacy": "Preserved; missing total => DATA BELUM LENGKAP",
+  "scope": "Local logic, schema and React rendering. Live browser retest pending."
+}

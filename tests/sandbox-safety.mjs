@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+const base=new URL('../',import.meta.url);
+const wrangler=JSON.parse(await readFile(new URL('wrangler.json',base),'utf8'));
+const pkg=JSON.parse(await readFile(new URL('package.json',base),'utf8'));
+const deployment=JSON.parse(await readFile(new URL('DEPLOYMENT.json',base),'utf8'));
+assert.equal(wrangler.name,'lisdes-watch-pa-v11-sandbox');
+assert.equal(wrangler.workers_dev,false);
+assert.equal(wrangler.d1_databases[0].database_name,'lisdes-watch-pa-v11-sandbox');
+assert.equal(wrangler.d1_databases[0].database_id,'00000000-0000-0000-0000-000000000000');
+assert.equal('account_id' in wrangler,false);
+assert.match(pkg.scripts.deploy,/deployment disabled/i);
+assert.equal(deployment.status,'LOCAL_WORKING_COPY_NOT_DEPLOYED');
+assert.equal(deployment.production_worker_unchanged,true);
+assert.equal(deployment.production_database_unchanged,true);
+console.log('Sandbox safety: 9 assertions PASS; production Worker/D1 are not targeted.');

@@ -1,0 +1,34 @@
+{
+  "build": "OT v1.1 / ISS-01",
+  "results": [
+    {
+      "test": "OT-01",
+      "input": "Sulit",
+      "expected": "P1",
+      "actual": "P1",
+      "unit": "PASS",
+      "server_rendered_table": "PASS",
+      "browser_retest": "NOT RUN"
+    },
+    {
+      "test": "OT-02",
+      "input": "Sedang",
+      "expected": "P2",
+      "actual": "P2",
+      "unit": "PASS",
+      "server_rendered_table": "PASS",
+      "browser_retest": "NOT RUN"
+    },
+    {
+      "test": "OT-03",
+      "input": "Mudah",
+      "expected": "P3",
+      "actual": "P3",
+      "unit": "PASS",
+      "server_rendered_table": "PASS",
+      "browser_retest": "NOT RUN"
+    }
+  ],
+  "scope": "Function and server-rendered component tests only; no live browser persistence or acceptance sign-off.",
+  "unmapped": "Sangat sulit requires rule validation; no implicit P3 fallback."
+}

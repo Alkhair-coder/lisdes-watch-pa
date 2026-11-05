@@ -1,0 +1,13 @@
+{
+  "release": "PA Logic Baseline v1.1 sandbox — integration pass 2",
+  "status": "LOCAL_WORKING_COPY_NOT_DEPLOYED",
+  "production_worker_unchanged": true,
+  "production_database_unchanged": true,
+  "sandbox_worker_name": "lisdes-watch-pa-v11-sandbox",
+  "sandbox_d1_name": "lisdes-watch-pa-v11-sandbox",
+  "sandbox_d1_id": "00000000-0000-0000-0000-000000000000",
+  "deployment_enabled": false,
+  "note": "HOR2 Key Activities are integrated into the simulation UI. No production deployment or D1 write is performed by this working package.",
+  "integration_pass": 2,
+  "qa_note": "23 PA simulation assertions and 9 sandbox safety assertions passed. Full dependency-backed build/browser UAT remains unverified unless completed separately."
+}

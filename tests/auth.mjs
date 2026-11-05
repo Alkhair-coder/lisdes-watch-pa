@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {issue,verify,equalSecret} from '../worker/auth.ts';
+const secret='random-test-secret-that-is-at-least-32-characters';
+const now=Date.now(),token=await issue(secret,now);
+assert(await verify(token,secret,now+1));
+assert(!await verify(token+'x',secret,now));
+assert(!await verify(token,secret+'wrong',now));
+assert(!await verify(token,secret,now+8*3600000));
+assert(!await verify('bogus',secret,now));
+assert(await equalSecret(secret,secret));
+assert(!await equalSecret(secret,secret+'a'));
+assert.equal(('lisdes_admin='+token).slice(13),token);
+console.log('8 authentication and session checks passed.');
